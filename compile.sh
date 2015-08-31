@@ -1,6 +1,7 @@
 #!/bin/sh
 
-cd ~
+mkdir /root/debs/
+cd /root/output/
 git clone https://github.com/ceph/calamari.git
 cd calamari
 cd debian
@@ -9,14 +10,12 @@ cd ..
 dpkg-buildpackage
 
 
-cd ~
-git clone https://github.com/ceph/Diamond.git
-cd Diamond
-git checkout calamari
-dpkg-buildpackage
+cd /root/output/
+git clone https://github.com/ceph/calamari-clients.git
+cd calamari-clients
+make build-real
 
-
-cd ~
+cd /root/output/
 git clone https://github.com/ceph/Diamond.git
 cd Diamond
 git checkout calamari
